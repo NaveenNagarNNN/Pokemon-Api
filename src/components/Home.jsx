@@ -18,13 +18,13 @@ function Home() {
     const [loading, setLoading] = useState(true)
     /* making api request */
     useEffect(function () {
-        console.log("useEffect again");
+        console.log("working");
         (function () {
             axios
                 .get
                 (`https://pokeapi.co/api/v2/pokemon/?offset=${(pageNum - 1) * 20}&limit=20`)
                 .then((res) => {
-                    console.table(res.name);
+                    // console.log(res.name);
                     setpokemon(res.data.results);
                     setLoading(false)
                     setValueAPI({
@@ -70,13 +70,14 @@ function Home() {
 
                                 onClick={() => navigate(`/data/${valueAPI.name}`)}  ///${valueAPI.name}
 
-                                key={item.id}
+                                key={valueAPI.id}
                                 className=" bg-center bg-cover  w-[160px] h-[30vh] md: h-[40vh]  md:w-[180px] m-4 rounded-xl hover:scale-110 duration-300 flex items-end relative"
                                 style={{
                                     backgroundImage:
                                         `url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index + ((pageNum - 1) * 20) + 1}.png)`  //{index + ((pageNum - 1) * 20) + 1}
                                 }}
                             >
+
                                 <div
                                     className="font-bold text-white bg-gray-900 bg-opacity-60 p-2 text-center w-full rounded-b-xl"> {item.title || item.name}</div>
                             </div>
@@ -84,12 +85,13 @@ function Home() {
                     })
                     }
                 </div>
-                <Pagination
-                    pageNum={pageNum}
-                    onPrev={onPrev}
-                    onNext={onNext}
-                ></Pagination>
+
             </div>
+            <Pagination
+                pageNum={pageNum}
+                onPrev={onPrev}
+                onNext={onNext}
+            ></Pagination>
         </>
     )
 }
