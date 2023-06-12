@@ -75,13 +75,11 @@ function Home() {
                         ariaLabel="loading"
 
                     /> : pokemon.map((item, index) => {
-
                         return <>
                             <div
-
                                 onClick={() => navigate(`/data/${valueAPI.name}`)}  ///${valueAPI.name}
 
-                                key={pageNum + "@" + index + "123" + pageNum}
+                                key={valueAPI.name}
                                 className=" bg-center bg-cover  w-[160px] h-[30vh] md: h-[40vh]  md:w-[180px] m-4 rounded-xl hover:scale-110 duration-300 flex items-end relative"
                                 style={{
                                     backgroundImage:
@@ -90,7 +88,7 @@ function Home() {
                             >
 
                                 <div
-                                    className="font-bold text-white bg-gray-900 bg-opacity-60 p-2 text-center w-full rounded-b-xl"> {item.title || item.name}</div>
+                                    className="font-bold text-white bg-gray-900 bg-opacity-60 p-2 text-center w-full rounded-b-xl"> {item.name}</div>
                             </div>
                         </>
                     })
