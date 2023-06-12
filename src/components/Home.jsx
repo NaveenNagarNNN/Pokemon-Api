@@ -77,7 +77,7 @@ function Home() {
                             <div
                                 onClick={() => navigate(`/data/${valueAPI.name}`)}  ///${valueAPI.name}
 
-                                key={valueAPI.name}
+                                key={index + ((pageNum - 1) * 20) + 1}
                                 className=" bg-center bg-cover  w-[160px] h-[30vh] md: h-[40vh]  md:w-[180px] m-4 rounded-xl hover:scale-110 duration-300 flex items-end relative"
                                 style={{
                                     backgroundImage:
