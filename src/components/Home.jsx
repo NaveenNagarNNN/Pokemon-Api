@@ -4,9 +4,12 @@ import axios from "axios";
 import Pagination from './Pagination';
 import { Oval } from "react-loader-spinner";
 import { useNavigate } from 'react-router-dom';
+import { createContext } from 'react';
 
+export const UserContext = createContext();
 
 function Home() {
+
     const navigate = useNavigate();
     const [valueAPI, setValueAPI] = useState({
         name: "",
@@ -18,14 +21,14 @@ function Home() {
     const [loading, setLoading] = useState(true)
     /* making api request */
     useEffect(function () {
-        console.log("working");
+        // console.log("working");
         (function () {
             axios
-                .get
-                (`https://pokeapi.co/api/v2/pokemon/?offset=${(pageNum - 1) * 20}&limit=20`)
+                .get(`https://pokeapi.co/api/v2/pokemon/?offset=${(pageNum - 1) * 20}&limit=20`)
                 .then((res) => {
                     // console.log(res.name);
                     setpokemon(res.data.results);
+                    console.log(pokemon);
                     setLoading(false)
                     setValueAPI({
                         name: res.name,
@@ -46,11 +49,19 @@ function Home() {
 
     }
 
+    // const Printbypagenation = (arr) => {
+    //     for (let i = 0; i < 20; i++) {
 
-
+    //     }
+    // }
     return (
         <><div className="flex flex-col sm:flex-row items-center ">
-            <Search searchPokemon={setpokemon} loading={setLoading} />
+            <UserContext.Provider value={pokemon}>
+                <Search searchPokemon={setpokemon} />
+                {/* searchPokemon={setpokemon} */}
+            </UserContext.Provider>
+
+            {/* //loading={setLoading} */}
         </div>
             <div className="mt-8">
                 <div className="mb-8 font-bold text-2xl text-center ">Pokemon</div>
@@ -70,7 +81,7 @@ function Home() {
 
                                 onClick={() => navigate(`/data/${valueAPI.name}`)}  ///${valueAPI.name}
 
-                                key={valueAPI.id}
+                                key={pageNum + "@" + index + "123" + pageNum}
                                 className=" bg-center bg-cover  w-[160px] h-[30vh] md: h-[40vh]  md:w-[180px] m-4 rounded-xl hover:scale-110 duration-300 flex items-end relative"
                                 style={{
                                     backgroundImage:
