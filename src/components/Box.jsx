@@ -269,7 +269,6 @@ export function Search(props) {
             axios
                 .get
                 (`https://pokeapi.co/api/v2/pokemon/?limit=1281`)
-                // (`https://pokeapi.co/api/v2/pokemon/?offset=${(pageNum - 1) * 20}&limit=20`)
                 .then((res) => {
                     setProducts(res.data.results);
                     // console.log(products);
@@ -285,40 +284,17 @@ export function Search(props) {
         const filterBySearch = products.filter((item) => {
             if (item.name.includes(searchVal)) { return item.name; }
         })
-        // setProducts(filterBySearch);
+        setSearchVal("");
+        if (filterBySearch == 0) { return toast.error("No Pokemon with given name"); }
+
 
         console.log(products)
         console.log((filterBySearch))
         props.searchPokemon(filterBySearch)
-        // pokemon = (filterBySearch);
-        setSearchVal("")
+        // setSearchVal("")
 
     }
-    // const mystyle = {
-    //     marginLeft: "600px",
-    //     marginTop: "20px",
-    //     fontWeight: "700"
-    // };
 
-    // return (
-    //     <div>
-    //         <div style={mystyle}>
-    //             <input onChange={e => setSearchVal(e.target.value)}>
-    //             </input>
-    //             <BsSearch onClick={handleSearchClick} />
-    //         </div>
-    //         <div>
-
-    //             {products.map((product) => {
-    //                 return (
-    //                     <div style={mystyle}>{product}</div>
-    //                 )
-    //             })
-    //             }
-
-    //         </div>
-    //     </div>
-    // );
     return (
         <div className="w-full flex items-center flex-col my-8 px-6">
             <div className="flex bg-slate-500">

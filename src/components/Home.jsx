@@ -56,12 +56,10 @@ function Home() {
     // }
     return (
         <><div className="flex flex-col sm:flex-row items-center ">
-            <UserContext.Provider value={pokemon}>
+            <UserContext.Provider value={{ pokemon, }}>
                 <Search searchPokemon={setpokemon} />
-                {/* searchPokemon={setpokemon} */}
             </UserContext.Provider>
 
-            {/* //loading={setLoading} */}
         </div>
             <div className="mt-8">
                 <div className="mb-8 font-bold text-2xl text-center ">Pokemon</div>

@@ -24,29 +24,7 @@ export default function DataPokemon() {
         }
     )
 
-    // useEffect(() => {
-    //     fetch(`https://pokeapi.co/api/v2/pokemon/${data}`)
-    //         .then((e) => { return e.json() })
-    //         .then((e) => {
-    //             setPokemon(
-    //                 {
-    //                     name: e.name,
-    //                     id: e.id,
-    //                     description: "",
-    //                     height: e.height,
-    //                     weight: e.weight,
-    //                     type: e.types,
-    //                     stats: e.stats
-    //                 }
-    //             )
-    //             setTypePokemon(e.types[0].type.name)
-    //         }
-    //         )
-    // }, [])
 
-    // useEffect(() => {
-    //     document.title = `Pokedex - ${pokemon.name}`
-    // }, [pokemon])
 
     return (
         <main >
