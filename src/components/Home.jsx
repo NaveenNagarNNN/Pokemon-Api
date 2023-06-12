@@ -86,7 +86,6 @@ function Home() {
                                         `url(https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${index + ((pageNum - 1) * 20) + 1}.png)`  //{index + ((pageNum - 1) * 20) + 1}
                                 }}
                             >
-
                                 <div
                                     className="font-bold text-white bg-gray-900 bg-opacity-60 p-2 text-center w-full rounded-b-xl"> {item.name}</div>
                             </div>
